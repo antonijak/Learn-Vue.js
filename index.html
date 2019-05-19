@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>VueJS</title>
+    <script src="vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1 v-once>{{ title }}</h1>
+      <p>{{ sayHello() }} - <a v-bind:href="link">Google</a></p>
+      <p v-html="finishedLink"></p>
+      <div id="exercise">
+        <!-- 1) Fill the <p> below with your Name and Age - using Interpolation -->
+        <p>VueJS is pretty cool - {{ name }} ({{ age }})</p>
+        <!-- 2) Output your age, multiplied by 3 -->
+        <p>{{ age * 3 }}</p>
+        <!-- 3) Call a function to output a random float between 0 and 1 (Math.random()) -->
+        <p>{{ randomFloat() }}</p>
+        <!-- 4) Search any image on Google and output it here by binding the "src" attribute -->
+        <div>
+          <img style="width:100px;height:100px" v-bind:src="image" />
+        </div>
+        <!-- 5) Pre-Populate this input with your name (set the "value" attribute) -->
+        <div>
+          <input type="text" v-bind:value="name" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello Vue.js!',
+          title: 'Hello',
+          link: 'http://google.com',
+          finishedLink: '<a href="http://google.com">Google</a>',
+          name: 'Antonija',
+          age: 31,
+          image: 'https://www.w3schools.com/w3css/img_lights.jpg'
+        },
+        methods: {
+          sayHello: function(event) {
+            this.title = 'Hello 2';
+            return this.title;
+          },
+          randomFloat: () => {
+            return Math.random();
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

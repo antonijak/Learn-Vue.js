@@ -13,19 +13,29 @@
       <div
         class="demo"
         @click="attachRed= !attachRed"
-        :class="{'red':attachRed, 'blue': !attachRed}"
+        :class="divClasses"
       ></div>
-      <div class="demo" :class="{'red':attachRed, 'blue': !attachRed}"></div>
-      <div class="demo"></div>
+      <div class="demo" :class="divClasses"></div>
+      <div class="demo" :class="[color, {red: attachRed}]"></div>
+      <hr />
+      <input type="text" v-model="color" />
     </div>
 
     <script>
       new Vue({
         el: '#app',
         data: {
-          attachRed: false
+          attachRed: false,
+          color: 'green'
         },
-        computed: {},
+        computed: {
+          divClasses() {
+            return {
+              red: this.attachRed,
+              blue: !this.attachRed
+            };
+          }
+        },
         methods: {},
         watch: {}
       });

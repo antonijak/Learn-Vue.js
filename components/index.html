@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Components</title>
+	</head>
+	<body>
+		<div id="app">
+			<my-cmp></my-cmp>
+			<hr />
+			<my-cmp></my-cmp>
+		</div>
+		<div id="app2">
+			<my-cmp></my-cmp>
+			<hr />
+			<my-cmp></my-cmp>
+		</div>
+
+		<script src="../vue.js"></script>
+		<script>
+			Vue.component('my-cmp', {
+				data: function() {
+					return {
+						status: 'Critical'
+					};
+				},
+				methods: {
+					changeStatus() {
+						this.status = 'Normal';
+					}
+				},
+				template:
+					'<p>Server status {{status}} (<button @click="changeStatus">Click</butoon>)</p>'
+			});
+
+			new Vue({
+				el: '#app'
+			});
+
+			new Vue({
+				el: '#app2'
+			});
+		</script>
+	</body>
+</html>
